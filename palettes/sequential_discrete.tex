@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\definecolor{color1}{rgb}{0.9343370194239788,0.964300075548118,1.0}
+\definecolor{color2}{rgb}{0.7896673808919005,0.7809264854529249,0.9651019287909685}
+\definecolor{color3}{rgb}{0.6560761374955576,0.5769081476910531,0.8200878420072614}
+\definecolor{color4}{rgb}{0.5165705875944332,0.34502495867655975,0.635774780296076}
+\definecolor{color5}{rgb}{0.3289106891381282,0.018766423509038083,0.38774900346890184}
+\begin{document}
+\begin{tikzpicture}
+\fill[draw, color1] (0.0,0) rectangle (1.0,1);
+\fill[draw, color2] (1.0,0) rectangle (2.0,1);
+\fill[draw, color3] (2.0,0) rectangle (3.0,1);
+\fill[draw, color4] (3.0,0) rectangle (4.0,1);
+\fill[draw, color5] (4.0,0) rectangle (5.0,1);
+\end{tikzpicture}
+\end{document}

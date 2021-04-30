@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xcolor}
+\definecolor{color1}{rgb}{0.3491279749038392,0.16929854062656294,0.7644163294614132}
+\definecolor{color2}{rgb}{0.9327412353336683,0.5395965779279632,0.0}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[grid style={line width=.2pt, gray!50}, axis y line*=left, axis x line*=bottom, nodes near coords, every node near coord/.append style={font=\scriptsize}, every axis plot/.append style={no markers}, width=7cm, height=6cm, grid=none, ymajorgrids=true, axis line style={draw=none}, legend cell align={left}, legend style={font=\footnotesize, draw=none, fill=none}, ylabel style={yshift=-3.5mm}, bar width=4mm, ybar=0mm, xticklabel style={font=\footnotesize}, xtick style={draw=none}, ytick style={draw=none}, legend pos=north west, ymin=0, ymax=79, xmin=0.5, xtick={1.000,2.000,3.000,4.000}, xticklabels={Dataset 1,Dataset 2,Dataset 3,Dataset 4}, xlabel=Datasets, ylabel=Précision (\%)]
+\addplot[color1, fill, draw=none] table[x=x0, y=y0, col sep=comma]{./examples/bar_chart_example.csv};
+\addlegendentry{Modèle 1};
+\addplot[color2, fill, draw=none] table[x=x1, y=y1, col sep=comma]{./examples/bar_chart_example.csv};
+\addlegendentry{Modèle 2};
+\end{axis}
+\end{tikzpicture}
+\end{document}

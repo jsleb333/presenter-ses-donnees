@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xcolor}
+\definecolor{color1}{rgb}{0.06675826365314719,0.22962619793962108,0.6970086147672786}
+\definecolor{color2}{rgb}{0.6762663662092402,0.07321922157943106,0.5978410096577489}
+\definecolor{color3}{rgb}{0.9701832371621925,0.28122385865643257,0.0}
+\definecolor{color4}{rgb}{0.6522439046617168,0.7922388865777401,0.0}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[grid style={gray!35, ultra thin}, axis y line*=left, axis x line*=bottom, every axis plot/.append style={no markers, line width=1.25pt}, width=7cm, height=6cm, grid=none, ymajorgrids=true, ylabel style={yshift=-4mm}, xlabel style={yshift=-3.5mm}, axis line style={draw=none}, x tick label style={align=center, font=\scriptsize}, xtick style={draw=none}, ytick style={draw=none}, xlabel=Attribut, ylabel=Taille (cm), xtick={0.000,1.000,2.000,3.000}, xticklabels={Longueur\\ pétale,Largeur\\ pétale,Longueur\\ sépale,Largeur\\ sépale}, ytick={0.000,2.000,4.000,6.000,8.000,10.000}, ymin=-0.6]
+\addplot[fill, color1, forget plot, line cap=round, line join=round, fill opacity=0.5] table[x=x0, y=y0, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[only marks, color1!25, forget plot, mark size=.4pt] table[x=x1, y=y1, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color1!50!black, forget plot, line cap=round, line width=1pt] table[x=x2, y=y2, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color1!50!black, forget plot, line cap=round, line width=2pt] table[x=x3, y=y3, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[fill, color2, forget plot, line cap=round, line join=round, fill opacity=0.5] table[x=x4, y=y4, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[only marks, color2!25, forget plot, mark size=.4pt] table[x=x5, y=y5, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color2!50!black, forget plot, line cap=round, line width=1pt] table[x=x6, y=y6, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color2!50!black, forget plot, line cap=round, line width=2pt] table[x=x7, y=y7, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[fill, color3, forget plot, line cap=round, line join=round, fill opacity=0.5] table[x=x8, y=y8, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[only marks, color3!25, forget plot, mark size=.4pt] table[x=x9, y=y9, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color3!50!black, forget plot, line cap=round, line width=1pt] table[x=x10, y=y10, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color3!50!black, forget plot, line cap=round, line width=2pt] table[x=x11, y=y11, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[fill, color4, forget plot, line cap=round, line join=round, fill opacity=0.5] table[x=x12, y=y12, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[only marks, color4!25, forget plot, mark size=.4pt] table[x=x13, y=y13, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color4!50!black, forget plot, line cap=round, line width=1pt] table[x=x14, y=y14, col sep=comma]{./examples/violin_plot_example.csv};
+\addplot[color4!50!black, forget plot, line cap=round, line width=2pt] table[x=x15, y=y15, col sep=comma]{./examples/violin_plot_example.csv};
+\end{axis}
+\end{tikzpicture}
+\end{document}

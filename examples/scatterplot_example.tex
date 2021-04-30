@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xcolor}
+\definecolor{color1}{rgb}{0.3491279749038392,0.16929854062656294,0.7644163294614132}
+\definecolor{color2}{rgb}{0.9327412353336683,0.5395965779279632,0.0}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[grid style={gray!35, ultra thin}, axis y line*=left, axis x line*=bottom, every axis plot/.append style={only marks, mark=*, mark size=2pt}, width=7cm, height=6cm, grid=major, legend cell align={left}, legend style={font=\footnotesize,draw=gray!50}, ylabel style={yshift=-3.5mm}, legend pos=south east, ymin=0, xmin=0, xtick={0.000,2.000,4.000,6.000,8.000}, ytick={0.000,2.500,5.000,7.500,10.000}, xlabel=Abscisse (unité), ylabel=Ordonnée (unité)]
+\addplot[color1, fill opacity=0.5] table[x=x0, y=y0, col sep=comma]{./examples/scatterplot.csv};
+\addlegendentry{Cercle indigo};
+\addplot[color2, mark=triangle*, mark size=2.5pt, fill opacity=0.5] table[x=x1, y=y1, col sep=comma]{./examples/scatterplot.csv};
+\addlegendentry{Triangle orange};
+\end{axis}
+\end{tikzpicture}
+\end{document}

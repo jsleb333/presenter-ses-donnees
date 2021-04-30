@@ -1,0 +1,177 @@
+\ProvidesPackage{myBeamer}[27/02/2020]
+%---------------------------------------------
+\RequirePackage[french]{babel} %si besoin français
+% \RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+% \RequirePackage{amsmath} % AMS Math Package
+% \RequirePackage{dsfont}
+\RequirePackage{booktabs}
+\RequirePackage{multicol} % Allows for multiple columns
+\RequirePackage{multirow}
+% \RequirePackage{setspace}
+% \RequirePackage{transparent}
+% \RequirePackage[cal=dutchcal, scr=boondox]{mathalfa} %To replace the standard calligraphic and scripture font.
+% \addto\captionsfrench{\def\tablename{\sc Tableau}} %si besoin français
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+% \usetikzlibrary{intersections}
+% \usetikzlibrary{calc}
+% \usetikzlibrary{decorations.pathreplacing}
+% \usetikzlibrary{positioning}
+% \usetikzlibrary{fadings}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\colorlet{couleurThemePale}{couleurTheme!25}
+\colorlet{couleurThemeFoncee}{couleurTheme!50!black}
+\setbeamercolor{background canvas}{bg=couleurFond}
+
+%============================
+%Math macros 
+%============================
+% \newcommand{\Id}{\mathds{1}}
+% \newcommand{\sgn}[1]{\text{sgn} \left( #1 \right)}
+% \newcommand{\real}{\mathds{R}}
+% \renewcommand{\natural}{\mathds{N}}
+% \newcommand{\complex}{\mathds{C}}
+
+% \newcommand{\pr}[1]{\left(#1 \right)} %for () that scale
+% \newcommand{\br}[1]{\left[#1 \right]} %for [] that scale
+% \newcommand{\cb}[1]{\left\{#1 \right\}} % for {} that scale
+% \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+% \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+% \newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} % for vectors of Greek letters
+% \newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+% \newcommand{\avg}[1]{\left< #1 \right>} % for average
+% \let\underdot=\d % rename builtin command \d{} to \underdot{}
+% \let\dr=\partial %d rond
+
+% %%% For general simplified fonctions:
+% \newcommand{\fa}{\: \forall \:}
+% \let\uglyimplies = \implies
+
+%Police
+\usefonttheme{professionalfonts}
+% \usepackage{venturis}
+\usepackage{montserrat}
+\setbeamerfont{mathtext}{family=\fontfamily{cmr}\selectfont}
+
+%Thème utilisé
+% \usetheme{Rochester}
+\usetheme{Madrid}
+% \useinnertheme{rectangles}
+% \usecolortheme{whale}
+
+
+% Change les items dans les listes
+\setbeamertemplate{itemize items}[triangle]
+\setbeamercolor{itemize item}{fg=couleurTheme}
+\setbeamercolor{itemize subitem}{fg=couleurSecondaire}
+
+\setbeamertemplate{enumerate item}{\bf\color{couleurTheme}\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\bf\color{couleurTheme}\insertenumlabel.\insertsubenumlabel}
+\setbeamertemplate{enumerate subsubitem}{\bf\color{couleurTheme}\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+
+
+\setbeamertemplate{section in toc}{\textcolor{couleurTheme}{\bf\inserttocsectionnumber.}\normalcolor~\inserttocsection}
+\setbeamertemplate{subsection in toc}{\hspace{1cm}\inserttocsubsection\\}
+
+%Largeur de la marge à gauche
+\setbeamersize{text margin left=1.2cm}
+\setbeamersize{text margin right=1.2cm}
+
+\setbeamertemplate{frametitle}{
+    \vspace{8mm}
+    \centerline{\color{couleurTheme} \huge \bf \insertframetitle}
+    \vspace{5mm}
+}
+
+%On enlève le symbole de navigation
+\beamertemplatenavigationsymbolsempty
+
+%On redéfinit la headline et footline de manière minimale
+\makeatletter
+\setbeamertemplate{headline}{} % Pas de headline
+\setbeamertemplate{footline} % Seulement le numéro de slide
+{
+  \leavevmode%
+  \parbox[b][1em][t]{\paperwidth}{\hfill\scriptsize\color{couleurTheme}\insertframenumber{}\hspace*{6pt}}
+  \vskip5pt%
+}
+\makeatother
+
+\newif\ifcoauthors
+\coauthorsfalse
+\def\@coauthors{}
+\providecommand{\coauthors}[1]{
+  \def\@coauthors{#1}
+  \ifx\@coauthors\empty
+    \coauthorsfalse
+  \else
+    \coauthorstrue
+  \fi
+}
+
+\setbeamertemplate{title page}{%
+\begin{tikzpicture}[remember picture,overlay,
+mystyle/.style={inner sep=\marge, outer sep=0, above left, align=right}]
+
+\def\frachaut{.5} % Fraction de la page en blanc
+\def\fracbas{1}
+\def\marge{.04\paperwidth}
+\def\logo{.25} %.19 pour être de la même taille de l'institut
+% Définitions de positions
+\path
+  (current page.north east) -- (current page.south east) coordinate[pos=\frachaut](boite haut droit) coordinate[pos=\fracbas](boite bas droit)
+  (current page.north west) -- (current page.south west) coordinate[pos=\frachaut](boite haut gauche) coordinate[pos=\fracbas](boite bas gauche);
+\path
+  (boite haut gauche) -- (boite haut droit) coordinate[midway](boite haut milieu)
+  -- (boite bas droit) coordinate[midway](boite milieu droit)
+  -- (boite bas gauche) coordinate[midway](boite bas milieu)
+  -- cycle coordinate[midway](boite milieu gauche);
+\path
+  (boite milieu droit) -- (boite milieu gauche) coordinate[midway](boite milieu milieu);
+% Couleur du haut
+\fill[couleurFond] (boite bas gauche) rectangle (current page.north east);
+% Couleur du bas
+\fill[couleurTheme] (current page.south west) rectangle (boite haut droit);
+
+% Titre
+\node[mystyle, below, white, yshift=-.2cm, anchor=north](titre) at (boite haut milieu) {\parbox{\textwidth}{\centering\huge\inserttitle}};
+
+% Date
+% \node[mystyle, above, white] at (boite bas milieu) {\small \insertdate};
+\node[mystyle, white] at (boite bas droit) {\small \insertdate};
+
+% % Date
+% \node[mystyle](date) at (boite haut droit) {\small\insertdate};
+
+% % Institut
+% \node[mystyle](institut) at ([yshift=-\marge]date.north east) {\parbox{.65\textwidth}{\raggedleft\insertinstitute}};
+
+% Institut
+% \node[mystyle](institut) at (boite haut droit) {\parbox{.65\textwidth}{\raggedleft\insertinstitute}};
+% Auteur
+\ifcoauthors
+  \node[mystyle, black!60](coauteurs) at (boite haut droit) {\@coauthors};
+  \node[mystyle, couleurTheme, yshift=-5mm](auteur) at (coauteurs.north east) {\Huge \bf \insertauthor};
+\else
+  \node[mystyle, couleurTheme, yshift=2mm, anchor=south east](auteur) at (boite haut droit) {\Huge \bf \insertauthor \vphantom{g}};
+\fi
+% % Circonstance
+% \node[mystyle](context) at ([yshift=-1.5*\marge]auteur.north east) {Le \insertdate,\\ \scriptsize dans le cadre du\\ Colloque de maitrise\\ \scriptsize de};
+% Circonstance
+% \node[mystyle](context) at ([yshift=-1.5*\marge]auteur.north east) {{\small Dans le cadre du cours} \\ Apprentissage par réseaux de neurones profonds};
+% Logo
+\node[mystyle,below right] at (current page.north west) {\includegraphics[scale=\logo]{./ul_p}};
+% \draw ([yshift=\marge]boite haut droit) -- ([yshift=\marge]boite haut gauche);
+% \draw ([yshift=-\marge]institut.north) -- +(-\paperwidth,0);
+\end{tikzpicture}}
+
+% Pour mettre un espace vertical après les listes
+\let\EndItemize\enditemize
+\def\enditemize{\EndItemize\medskip}
+
+\endinput
