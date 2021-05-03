@@ -25,7 +25,7 @@
 \usetikzlibrary{positioning}
 
 
-\title{Communiquer efficacement ses résultats (featuring LaTeX)}
+\title{Communiquer efficacement ses données: un guide pratique}
 \author[J.S. Leboeuf]{Jean-Samuel Leboeuf}
 \date{5 mai 2021}
 
@@ -59,6 +59,13 @@
 \titlepage
 \end{frame}
 
+% Être capable de partager efficacement ses résultats est une part importante de la communication scientifique. Cet exposé se veut un guide pratique sur le choix du moyen de communication des données (ex.: tableaux, diagrammes à courbes, diagrammes à bandes, etc.) ainsi que sur la manière de les présenter efficacement et professionnellement.
+
+% Guide pratique sur la communication efficace des données à l'aide de tableaux et de figures.
+%
+
+
+
 
 % Intro:
 % On vous a montré comment écrire un essai/rapport: intro, hypothèses/position, méthodologie et résultats/arguments, analyse, conclusion.
@@ -72,7 +79,7 @@
 
 \begin{frame}[t]\frametitle{La communication scientifique}
 
-
+\vspace{3mm}
 \begin{tikzpicture}[remember picture, overlay, shift=(current page.center)]
 \node at (0,0) {
   \begin{tikzpicture}[inner sep=0pt, outer sep=2mm]
@@ -84,25 +91,29 @@
 	% \node[font=\small, right=0mm of result](analyse) {Analyse\vphantom{qM}};
 	\node[font=\small, right=0mm of result](conclu) {Conclusion\vphantom{qM}};
 
-	\node[couleurSecondaire, above=8mm of prob](donne prob) {Donnée};
-	\node[couleurSecondaire, above=8mm of metho](donne metho) {Donnée};
-	\draw[couleurSecondaire, ->] (donne prob) -- (prob);
-	\draw[couleurSecondaire, ->] (donne metho) -- (metho);
-	\draw[couleurSecondaire, ->] (metho) edge[bend left=45] (result);
+	\visible<2->{
+	\node[couleurTheme, above=8mm of prob](donne prob) {Donnée};
+	\node[couleurTheme, above=8mm of metho](donne metho) {Donnée};
+	\draw[couleurTheme, ->] (donne prob) -- (prob);
+	\draw[couleurTheme, ->] (donne metho) -- (metho);
+	\draw[couleurTheme, ->] (metho) edge[bend left=45] (result);
+	}
 
-	\node[couleurTheme, below=8mm of prob](trouver prob) {À trouver};
-	\draw[couleurTheme, ->] (trouver prob) -- (prob);
-	\draw[couleurTheme, <-] (result) edge[bend left=65] (hyp);
-	\draw[couleurTheme, ->] (result) edge[bend left=45] (metho);
+	\visible<3->{
+	\node[couleurSecondaire, below=8mm of prob](trouver prob) {À trouver};
+	\draw[couleurSecondaire, ->] (trouver prob) -- (prob);
+	\draw[couleurSecondaire, <-] (result) edge[bend left=65] (hyp);
+	\draw[couleurSecondaire, ->] (result) edge[bend left=45] (metho);
+	}
   \end{tikzpicture}
 };
 \end{tikzpicture}
 
-\vspace{45mm}
+\vspace{35mm}
 
 % Ce qui est différent:
 \begin{itemize}
-	\item Les résultats doivent être \textbf{convaincants} et \textbf{faciles à comprendre}
+	\item<4-> Les résultats doivent être \textbf{convaincants} et \textbf{faciles à comprendre}
 	% \item La méthodologie doit être \textbf{justifiée}
 \end{itemize}
 % Les résultats doivent être \textbf{facile à comprendre} et être \textbf{convaincants}
@@ -112,7 +123,7 @@
 
 
 \begin{frame}[c]\frametitle{Communication efficace}
-
+\onslide<+->
 Pour être \textbf{convaincants}, il faut:\vspace{-\parskip}
 \begin{itemize}
 	\item Des données pertinentes à l'hypothèse
@@ -124,6 +135,7 @@ Pour être \textbf{faciles à comprendre}, il faut:\vspace{-\parskip}
 	\item Éviter les éléments superflus
 \end{itemize}
 
+\onslide<+->
 On peut appliquer le principe de \og coût initial négatif \fg
 
 
@@ -140,48 +152,38 @@ On peut appliquer le principe de \og coût initial négatif \fg
 \section{Le principe de coût initial négatif}
 \label{sec:le_principe_de_coût_initial_négatif}
 
-\begin{frame}[c]\frametitle{Valeur intrinsèque}
+
+
+\begin{frame}[c]\frametitle{Coût initial négatif}
     
+    
+\vspace{-5mm}
 \centering
 \begin{tikzpicture}
 \draw[->] (-5,0) -- (5,0) node[pos=1, anchor=west, align=left] {Valeur\\ intrinsèque};
-\draw[-] (0,.2) -- (0,-.2) node[below] {0};
+\visible<2>{
+\draw[->] (0,-2) -- (0,2) node[pos=1, anchor=south, align=left] {Valeur\\ ajoutée};
+}
 
 \fill[opacity=.2, couleurTheme] (0, 0) ellipse [x radius=1cm, y radius=.7cm];
 \fill[opacity=.2, couleurSecondaire] (-3, 0) ellipse [x radius=1.8cm, y radius=.7cm];
 \fill[opacity=.2, b-green] (2.8, 0) ellipse [x radius=1.6cm, y radius=.7cm];
 
-\node[couleurSecondaire] at (-4, 1.3) {Faux, ambigü, contradictoire};
+\visible<1>{
+\node[couleurSecondaire] at (-3.5, 1.3) {Faux, ambigü, contradictoire};
 \node[couleurTheme] at (0, -1.3) {Superflu, redondant, distrayant};
 \node[b-green] at (4, 1.3) {Utile, convaincant};
-
-\end{tikzpicture}
-
-\end{frame}
-
-
-
-\begin{frame}[c]\frametitle{Le coût initial négatif}
-    
-    
-\centering
-\begin{tikzpicture}
 \draw[->] (-5,0) -- (5,0) node[pos=1, anchor=west, align=left] {Valeur\\ intrinsèque};
-\draw[->] (0,-2) -- (0,2) node[pos=1, anchor=south, align=left] {Valeur\\ ajoutée};
+\draw[-] (0,.2) -- (0,-.2) node[below] {0};
+}
 
+\visible<2>{
 \draw[-, couleurTheme] (-2,-1.8) -- (4.2,1.8);
-
 \node[anchor=west](cout) at (.6, -1.1) {Coût initial négatif};
 \draw (cout.west) to[out=180, in=-35] (.05,-.8);
+}
 
 
-\fill[opacity=.2, couleurTheme] (0, 0) ellipse [x radius=1cm, y radius=.7cm];
-\fill[opacity=.2, couleurSecondaire] (-3, 0) ellipse [x radius=1.8cm, y radius=.7cm];
-\fill[opacity=.2, b-green] (2.8, 0) ellipse [x radius=1.6cm, y radius=.7cm];
-
-% \node[couleurSecondaire] at (-4, 1.3) {Faux, ambigü, contradictoire};
-% \node[couleurTheme] at (0, -1.3) {Superflu, inutile};
-% \node[b-green] at (4, 1.3) {Pertinent, utile};
 
 
 \end{tikzpicture}
@@ -198,7 +200,8 @@ On peut appliquer le principe de \og coût initial négatif \fg
 \node(exp) at (0, 1.2) {Expérience\vphantom{Mg}};
 \node(donnees) {Données\vphantom{Mg}};
 \node(tab) at (-2.9,-1.7) {\bf Tableaux\vphantom{Mg}};
-\node(graph) at (2.9,-1.7) {\bf Graphiques\vphantom{Mg}};
+\node<1>(graph) at (2.9,-1.7) {\bf Graphiques\vphantom{Mg}};
+\node<2>[opacity=.5] at (2.9,-1.7) {\bf Graphiques\vphantom{Mg}};
 
 \draw (exp) -- (donnees);
 \draw (donnees) edge[out=-90, in=90] (tab);
@@ -214,7 +217,16 @@ On peut appliquer le principe de \og coût initial négatif \fg
 \end{minipage}
 };
 
-\node[below=0mm of graph] {
+\node<1>[below=0mm of graph] {
+\begin{minipage}{.43\textwidth}
+\begin{itemize}
+	\item Visualisation des données
+	\item Comparaison qualitative
+	\item Extraction de tendances
+\end{itemize}
+\end{minipage}
+};
+\node<2>[below=0mm of graph, opacity=.5] {
 \begin{minipage}{.43\textwidth}
 \begin{itemize}
 	\item Visualisation des données
@@ -236,30 +248,37 @@ On peut appliquer le principe de \og coût initial négatif \fg
 \label{sec:les_tableaux}
 
 
+
+
+
 \begin{frame}[c]\frametitle{Deux types de tableaux}
 
 \vspace{-3mm}
 
-Tableau de \textbf{communication}:\vspace{-\parskip}
+\begin{tabular}{@{}ll@{}}
+Tableau de \textbf{communication} & Tableau de \textbf{compilation}\\
+\begin{minipage}[t]{.52\textwidth}
 \begin{itemize}
-	\item Résumé utile des informations
-	\item Concis et facile à lire
-	\item Ne contient pas toutes les informations (coût initial négatif)
-	\item Met en évidence des différences ponctuelles
-	\item Se retrouve dans le \textbf{corps} d'un document
+	\item<2-> Résumé utile des informations
+	\item<2-> Concis et facile à lire
+	\item<2-> Ne contient pas toutes les informations (coût initial négatif)
+	\item<2-> Met en évidence des différences ponctuelles
+	\item<2-> Dans le \textbf{corps} d'un document
 \end{itemize}
+\end{minipage}
+& 
+\begin{minipage}[t]{.48\textwidth}
+\begin{itemize}
+	\item<3-> Contient toutes les informations recueillies
+	\item<3-> Se veut une référence
+	\item<3-> Longs et plates à lire
+	\item<3-> Dans l'\textbf{annexe} d'un document
+\end{itemize}
+\end{minipage}
+\end{tabular}
 
-Tableau de \textbf{compilation}:\vspace{-\parskip}
-\begin{itemize}
-	\item Contient toutes les informations recueillies
-	\item Longs et plates à lire
-	\item Devrait se retrouver dans l'\textbf{annexe} d'un document
-\end{itemize}
 
 \end{frame}
-
-
-
 
 
 \begin{frame}[c]\frametitle{Les tableaux de communication}
@@ -303,9 +322,10 @@ Tableau de \textbf{compilation}:\vspace{-\parskip}
 \scriptsize\raggedright
 Tiré de l'article «~Perceiver: General Perception with Iterative Attention~» par DeepMind (Google)
 &
+\visible<2->{
 \begin{minipage}{.4\textwidth}
 \vspace{-3.5cm}
-\begin{table}\rmfamily\scriptsize
+\begin{table}\rmfamily\scriptsize\RaggedRight
 Table~1.\ Top\hspace{1pt}-\hspace{-1.08pt}1 validation accuracy on ImageNet. Blablabla\dots
 
 \vspace{3pt}
@@ -323,6 +343,7 @@ Perceiver & --- & 76.4 & no\\
 \end{tabular}
 \end{table}
 \end{minipage}
+}
 
 \end{tabular}
 
@@ -336,20 +357,20 @@ Perceiver & --- & 76.4 & no\\
 \vspace{-4mm}
 
 \begin{itemize}
-	\item Tableau $\ne$ grille:
+	\item<+-> Tableau $\ne$ grille:
 	\begin{itemize}
 		\item Lignes horizontales: début, fin et entre les sections seulement
 		\item JAMAIS de lignes verticales: ajuster l'espace entre les colonnes
 	\end{itemize}
 	\vspace{-3mm}
-	\item Étiquettes des colonnes avec unités et abbréviations limitées
-	\item Titre \textit{au-dessus} du tableau avec explications
-	\item Éviter les répétitions
-	\item Citer dans le titre ou le texte
-	\item Mettre en évidence une seule chose à la fois
-	\item Éviter les couleurs
-	\item Référer au tableau explicitement dans le texte
-	\item Aligner les chiffres à droite, le texte à gauche
+	\item<+-> Étiquettes des colonnes avec unités et abbréviations limitées
+	\item<+-> Titre \textit{au-dessus} du tableau avec explications
+	\item<+-> Éviter les répétitions
+	\item<+-> Citer dans le titre ou le texte
+	\item<+-> Mettre en évidence une seule chose à la fois
+	\item<+-> Éviter les couleurs
+	\item<+-> Référer au tableau explicitement dans le texte
+	\item<+-> Aligner les chiffres à droite, le texte à gauche
 \end{itemize}
 
 \end{frame}
@@ -362,7 +383,7 @@ Perceiver & --- & 76.4 & no\\
 Les packages:
 \vspace{-\parskip}
 \begin{itemize}
-	\item \texttt{booktabs}: Redéfinit entièrement les tableaux
+	\item \texttt{booktabs}: Redéfinit entièrement les tableaux (\href{https://ctan.mirror.rafal.ca/info/translations/booktabs/fr/f-booktabs.pdf}{\underline{documentation}})
 	\item \texttt{multicol} et \texttt{multirow}: Fusionner des cellules
 \end{itemize}
 
@@ -420,9 +441,11 @@ Outil d'aide à la génération de tableaux:
 
 
 \begin{frame}[fragile]\frametitle{Exemple}
-\vspace{-5mm}
+\vspace{-7mm}
 
-\scriptsize
+\begin{tabular}{ll}
+\tiny
+\begin{minipage}{.55\textwidth}
 \begin{verbatim}
 \usepackage{booktabs}
 
@@ -432,18 +455,43 @@ Outil d'aide à la génération de tableaux:
 \vspace{3pt}
 \begin{tabular}{l@{\hskip5pt}r@{\hskip10pt}r@{\hskip5pt}c}
 \toprule
-\multirow{2}{*}[-2pt]{Model} & \multicolumn{2}{c}{Top-1 (\%)} & \multirow{2}{*}[-2pt]{Uses grid}\\
+\multirow{2}{*}[-2pt]{Model}
+    & \multicolumn{2}{c}{Top-1 (\%)}
+    & \multirow{2}{*}[-2pt]{Uses grid}\\
 \cmidrule(r){2-3}
  & No FF & FF & \\
 \midrule
-ResNet-50 & 76.9 & 73.5 & yes\\
-ViT-B-16 & \textbf{77.9} & 76.7 & yes\\
+ResNet-50   & 76.9 & 73.5 & yes\\
+ViT-B-16    & \textbf{77.9} & 76.7 & yes\\
 Transformer & --- & 57.0 & no\\
-Perceiver & --- & 76.4 & no\\
+Perceiver   & --- & 76.4 & no\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{verbatim}
+\end{minipage}
+& 
+\begin{minipage}{.39\textwidth}
+\scriptsize\rmfamily
+Top-1 validation accuracy on ImageNet.
+\vspace{6pt}
+\begin{tabular}{l@{\hskip5pt}r@{\hskip10pt}r@{\hskip5pt}c}
+\toprule
+\multirow{2}{*}[-2pt]{Model}
+    & \multicolumn{2}{c}{Top-1 (\%)}
+    & \multirow{2}{*}[-2pt]{Uses grid}\\
+\cmidrule(r){2-3}
+ & No FF & FF & \\
+\midrule
+ResNet-50   & 76.9 & 73.5 & yes\\
+ViT-B-16    & \textbf{77.9} & 76.7 & yes\\
+Transformer & --- & 57.0 & no\\
+Perceiver   & --- & 76.4 & no\\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+\end{tabular}
 
 \end{frame}
 
@@ -466,9 +514,9 @@ Perceiver & --- & 76.4 & no\\
 
 
 
+\section{Principes premiers des figures}
+\label{sec:principes_premiers_des_figures}
 
-\section{Les graphiques}
-\label{sec:les_graphiques}
 
 
 \begin{frame}[c]\frametitle{Les graphiques}
@@ -515,7 +563,7 @@ Perceiver & --- & 76.4 & no\\
 
 
 
-\begin{frame}[c]%\frametitle{Les types de graphiques}
+\begin{frame}[c]
     
 \vspace{-1pt}
 \centering
@@ -566,10 +614,6 @@ Perceiver & --- & 76.4 & no\\
 % \end{frame}
 
 
-\subsection{Principes premiers}
-\label{sub:principes_premiers}
-
-
 
 \begin{frame}[c]\frametitle{Principes premiers d'une figure}
 
@@ -588,6 +632,10 @@ Perceiver & --- & 76.4 & no\\
 \begin{frame}[c]\frametitle{Représentation fidèle}
     
 
+\begin{itemize}
+	\item Ne donne pas de fausses impressions
+\end{itemize}
+
 \begin{center}
 \includegraphics[width=.4\textwidth]{figures/misleading_chart.png}
 \hspace{1cm}
@@ -602,9 +650,11 @@ Perceiver & --- & 76.4 & no\\
 
 \begin{frame}[c]\frametitle{Représentation claire}
     
-
+% \begin{itemize}
+% 	\item Auto-évidente, simple et facile à comprendre
+% \end{itemize}
 \begin{center}
-\includegraphics[scale=.27]{figures/unclear-chart.png} 
+\includegraphics[scale=.25]{figures/unclear-chart.png} 
 \end{center}
 
 \end{frame}
@@ -639,6 +689,13 @@ Perceiver & --- & 76.4 & no\\
 
 
 
+
+
+
+\section{Les types de graphiques}
+\label{sec:les_types_de_graphiques}
+
+
 \begin{frame}[c]\frametitle{Guide général de style}
 
 Les \textbf{axes}:
@@ -670,8 +727,13 @@ Le \textbf{titre}:
 \begin{minipage}{.49\textwidth}
 \begin{itemize}
 	\item Éviter les légendes si possibles
+	\begin{itemize}
+		\item Sinon, lister les entrées en ordre d'apparition
+	\end{itemize}
+	\vspace{-3mm}
 	\item Couleurs pour différencier les courbes
-	\item Lignes pleines, discontinues ou pointillées pour différencier les familles de courbes 
+	\item Lignes pleines, discontinues ou pointillées pour différencier les familles de courbes
+	\item 8 courbes maximum par diagrammes
 \end{itemize}
 \end{minipage}
 & 
@@ -704,7 +766,7 @@ Figure~1. Exemple d'un diagramme à courbes. La légende est remplacée par une 
 \begin{itemize}
 	\item Formes et couleurs pour distinguer les catégories
 	\item Opacité pour les données superposées
-	\item Pour une troisième variable: utiliser une \emph{colormap}, pas la taille des points
+	\item Pour une troisième variable: utiliser une carte de couleurs, pas la taille des points
 \end{itemize}
 \end{minipage}
 & 
@@ -874,15 +936,15 @@ Figure~1. Exemple d'un diagramme à violons pour la distribution des attributs d
 
 
 
-\subsection{Les couleurs}
-\label{sub:les_couleurs}
+\section{Les couleurs}
+\label{sec:les_couleurs}
 
 
 \begin{frame}[c]\frametitle{Les couleurs}
 
 \vspace{-2mm}
 % \textbf{Utilité:}\vspace{-\parskip}
-
+\onslide<2->
 \begin{minipage}[t]{.49\textwidth}
 \centering
 \textbf{Esthétique}
@@ -890,6 +952,7 @@ Figure~1. Exemple d'un diagramme à violons pour la distribution des attributs d
 
 \includegraphics[scale=.45]{examples/lineplot_example.pdf}
 \end{minipage}
+\onslide<3->
 \begin{minipage}[t]{.49\textwidth}
 \centering
 Différencier des \textbf{catégories}
@@ -899,6 +962,7 @@ Différencier des \textbf{catégories}
 \end{minipage}
 
 
+\onslide<4->
 \begin{minipage}[t]{.49\textwidth}
 \centering
 Représenter un \textbf{spectre}
@@ -906,6 +970,7 @@ Représenter un \textbf{spectre}
 
 \includegraphics[scale=.35]{examples/heatmap_example.pdf}
 \end{minipage}
+\onslide<5->
 \begin{minipage}[t]{.49\textwidth}
 \centering
 Mettre en \textbf{évidence}
@@ -940,7 +1005,7 @@ Mettre en \textbf{évidence}
 
 \end{frame}
 
-\begin{frame}[c]\frametitle{Les daltoniens}
+\begin{frame}[c]\frametitle{Le daltonisme}
 
 Environ un homme sur 10 est daltonien. 
 
@@ -955,49 +1020,89 @@ Environ un homme sur 10 est daltonien.
 
 
 
-\begin{frame}[c]\frametitle{Les palettes de couleurs}
+% \begin{frame}[c]\frametitle{Les palettes de couleurs}
 
-\vspace{-3mm}
-\RaggedRight\footnotesize
-\renewcommand{\arraystretch}{1.7}
-\begin{tabular}{lp{.27\textwidth}p{.27\textwidth}p{.27\textwidth}}
- & \textbf{Qualitative} & \textbf{Séquentielle} & \textbf{Divergente}\\[1mm]
-Continues
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_continuous.pdf}}
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_continuous.pdf}}
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_continuous.pdf}} \\
-Discrètes
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_discrete.pdf}}
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_discrete.pdf}}
-	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_discrete.pdf}} \\
-Utilité & Catégories & Intensité & Déviation \\
-Propriétés 
-	& 1 teinte par catégorie 
-	& 1 teinte; le blanc marque le neutre
-	& 2 teintes; le blanc marque le neutre\\
-Faiblesses 
-	& Daltonisme, tons de gris
-	& Difficile à analyser, affecté par les couleurs environnantes
-	& Difficile à analyser, affecté par les couleurs environnantes \\
-Mitigations
-	& Varier la luminosité, annoter
-	& Échelle perceptuellement linéaire, annoter
-	& Échelle perceptuellement linéaire, annoter
+% \vspace{-3mm}
+% \RaggedRight\footnotesize
+% \renewcommand{\arraystretch}{1.7}
+% \begin{tabular}{lp{.27\textwidth}p{.27\textwidth}p{.27\textwidth}}
+%  & \textbf{Qualitative} & \textbf{Séquentielle} & \textbf{Divergente}\\[1mm]
+% Continues
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_continuous.pdf}}
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_continuous.pdf}}
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_continuous.pdf}} \\
+% Discrètes
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_discrete.pdf}}
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_discrete.pdf}}
+% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_discrete.pdf}} \\
+% Utilité & Catégories & Intensité & Déviation \\
+% Propriétés 
+% 	& 1 teinte par catégorie 
+% 	& 1 teinte; le blanc marque le neutre
+% 	& 2 teintes; le blanc marque le neutre\\
+% Faiblesses 
+% 	& Daltonisme, tons de gris
+% 	& Difficile à analyser, affecté par les couleurs environnantes
+% 	& Difficile à analyser, affecté par les couleurs environnantes \\
+% Mitigations
+% 	& Varier la luminosité, annoter
+% 	& Échelle perceptuellement linéaire, annoter
+% 	& Échelle perceptuellement linéaire, annoter
+% \end{tabular}
+
+
+% \end{frame}
+
+
+
+
+\begin{frame}[c]\frametitle{Palettes qualitatives}
+
+\vspace{1mm}
+
+\begin{tabular}{@{}ll}
+\RaggedRight\small
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{@{}lp{.4\textwidth}}
+\textbf{Utilité}
+	& Catégories\\
+\textbf{Propriétés}
+	& 1 teinte par catégorie\\
+\textbf{Faiblesses}
+	& Daltonisme, tons de gris\\
+\textbf{Mitigations}
+	& Varier la luminosité, annoter\\
+\end{tabular}
+&
+\begin{minipage}{.5\textwidth}
+Continue
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/qualitative_continuous.pdf}
+
+\vspace{2mm}
+
+Discrète
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/qualitative_discrete.pdf}
+
+\vspace{-2mm}
+{
+	\tiny
+	\hspace{.32\textwidth}python2latex \textbf{holi}
+}
+\end{minipage} 
 \end{tabular}
 
+\pause
+\vspace{4mm}
+\small
+\begin{tabular}{@{}p{.25\textwidth}@{}p{.25\textwidth}@{}p{.25\textwidth}@{}p{.25\textwidth}@{}}
+Deuteranopia & Protanopia & Tritanopia & Monochromacy\\
+\includegraphics[width=.2\textwidth]{palettes/qualitative-palette-deuteranopia.png} & \includegraphics[width=.2\textwidth]{palettes/qualitative-palette-protanopia.png} & \includegraphics[width=.2\textwidth]{palettes/qualitative-palette-tritanopia.png} & \includegraphics[width=.2\textwidth]{palettes/qualitative-palette-monochrome.png}\\
+\end{tabular}
 
-% \textbf{Trois catégories:}
-% \begin{itemize}\setlength\itemsep{1em}
-% 	\item Qualitatives
-% 	\item Séquentielles
-% 	\item Divergentes
-% \end{itemize}
-
-% \textbf{Deux types:}
-% \begin{itemize}\setlength\itemsep{1em}
-% 	\item Discrètes
-% 	\item Continues
-% \end{itemize}
 
 \end{frame}
 
@@ -1021,6 +1126,60 @@ Mitigations
 
 
 
+
+
+
+
+\begin{frame}[c]\frametitle{Palettes séquentielles}
+
+\vspace{0mm}
+
+\begin{tabular}{@{}ll}
+\RaggedRight\small
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{@{}lp{.4\textwidth}}
+\textbf{Utilité}
+	& Intensité\\
+\textbf{Propriétés}
+	& 1 teinte; le pâle indique une faible intensité\\
+\textbf{Faiblesses}
+	& Difficile à analyser, affecté par les couleurs environnantes\\
+\textbf{Mitigations}
+	& Échelle perceptuellement linéaire, annoter\\
+\end{tabular}
+&
+\begin{minipage}{.5\textwidth}
+Continue
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/sequential_continuous.pdf}
+
+\vspace{2mm}
+
+Discrète
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/sequential_discrete.pdf}
+\end{minipage} 
+\end{tabular}
+
+\pause
+% \vspace{4mm}
+\small
+\textbf{Autres exemples}
+
+\centering
+\begin{tabular}{l@{\hskip10mm}l}
+viridis & magma\\
+\includegraphics[width=.3\textwidth]{palettes/sequential-viridis.png}
+&
+\includegraphics[width=.3\textwidth]{palettes/sequential-magma.png}
+\end{tabular}
+
+
+\end{frame}
+
+
 % \begin{frame}[c]\frametitle{Palettes séquentielles}
 
 % Se basent sur une ou deux teintes similaires et sur la luminosité
@@ -1036,6 +1195,65 @@ Mitigations
 
 
 
+
+
+
+
+
+
+\begin{frame}[c]\frametitle{Palettes divergentes}
+
+\vspace{0mm}
+
+\begin{tabular}{@{}ll}
+\RaggedRight\small
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{@{}lp{.4\textwidth}}
+\textbf{Utilité}
+	& Déviation\\
+\textbf{Propriétés}
+	& 2 teinte; le pâle indique le neutre\\
+\textbf{Faiblesses}
+	& Difficile à analyser, affecté par les couleurs environnantes\\
+\textbf{Mitigations}
+	& Échelle perceptuellement linéaire, annoter\\
+\end{tabular}
+&
+\begin{minipage}{.5\textwidth}
+Continue
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/diverging_continuous.pdf}
+
+\vspace{2mm}
+
+Discrète
+\vspace{1mm}
+
+\includegraphics[width=.6\textwidth]{palettes/diverging_discrete.pdf}
+\end{minipage} 
+\end{tabular}
+
+\pause
+% \vspace{4mm}
+\centering
+\small
+\begin{tikzpicture}
+\node(jet) {\includegraphics[width=.3\textwidth]{palettes/matplotlib-jet-palette.png}};
+\node[anchor=south] at (jet.north) {matplotlib \textbf{jet}};
+
+\draw[-, red, ultra thick] (jet.north east) -- (jet.south west);
+\draw[-, red, ultra thick] (jet.south east) -- (jet.north west);
+
+\node[anchor=west](turbo) at ([xshift=1cm]jet.east) {\includegraphics[width=.3\textwidth]{palettes/diverging-turbo.png}};
+\node[anchor=south] at (turbo.north) {Google \textbf{turbo}};
+
+
+\draw (jet) -- (turbo);
+\end{tikzpicture}
+
+
+\end{frame}
 
 % \begin{frame}[c]\frametitle{Palettes divergentes}
     
@@ -1056,8 +1274,7 @@ Mitigations
 
 \begin{frame}[c]\frametitle{En résumé}
 
-La couleur constitue un moyen utile, mais plus ou moins fidèle de transmettre l'information.
-
+Moyen utile, mais plus ou moins fidèle.
 Pour mitiger les faiblesses:\vspace{-\parskip}
 \begin{itemize}
 	\item Complémenter l'information (ex. annotations, formes)
@@ -1069,6 +1286,12 @@ Outils:\vspace{-\parskip}
 \begin{itemize}
 	\item \href{https://colorbrewer2.org/}{\underline{ColorBrewer}} pour des palettes éprouvées
 	\item \href{https://www.color-blindness.com/coblis-color-blindness-simulator/}{\underline{Coblis}}: Simulateur de daltonisme pour vérifier vos figures 
+\end{itemize}
+
+Références:\vspace{-\parskip}
+\begin{itemize}
+	\item \href{https://seaborn.pydata.org/tutorial/color_palettes.html}{\underline{seaborn}}
+	\item \href{https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html}{\underline{Google turbo}}
 \end{itemize}
 
 \end{frame}
