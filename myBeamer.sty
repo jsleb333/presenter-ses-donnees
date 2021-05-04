@@ -118,10 +118,10 @@
 \begin{tikzpicture}[remember picture,overlay,
 mystyle/.style={inner sep=\marge, outer sep=0, above left, align=right}]
 
-\def\frachaut{.5} % Fraction de la page en blanc
+\def\frachaut{.55} % Fraction de la page en blanc
 \def\fracbas{1}
 \def\marge{.04\paperwidth}
-\def\logo{.25} %.19 pour être de la même taille de l'institut
+\def\logo{.15} %.19 pour être de la même taille de l'institut
 % Définitions de positions
 \path
   (current page.north east) -- (current page.south east) coordinate[pos=\frachaut](boite haut droit) coordinate[pos=\fracbas](boite bas droit)
@@ -165,7 +165,7 @@ mystyle/.style={inner sep=\marge, outer sep=0, above left, align=right}]
 % Circonstance
 % \node[mystyle](context) at ([yshift=-1.5*\marge]auteur.north east) {{\small Dans le cadre du cours} \\ Apprentissage par réseaux de neurones profonds};
 % Logo
-\node[mystyle,below right] at (current page.north west) {\includegraphics[scale=\logo]{./ul_p}};
+\node[mystyle,below right] at (current page.north west) {\includegraphics[height=\logo\paperheight]{logo-bootcamp-iid.png}};
 % \draw ([yshift=\marge]boite haut droit) -- ([yshift=\marge]boite haut gauche);
 % \draw ([yshift=-\marge]institut.north) -- +(-\paperwidth,0);
 \end{tikzpicture}}
