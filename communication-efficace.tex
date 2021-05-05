@@ -740,15 +740,16 @@ Figure~1. Exemple d'un diagramme à bandes avec des catégories.
 
 
 \begin{frame}[c]\frametitle{Guide pour les «~heatmaps~»}
-    
+
 \begin{tabular}{@{}ll}
 \begin{minipage}{.45\textwidth}
 \begin{itemize}
 	\item Se lit comme une matrice: origine en haut à droite
 	\item Carte de couleurs:
-	\begin{itemize}
-		\item Séquentielle pour marquer l'intensité
-		\item Divergente pour marquer la différence p/r à une valeur de référence
+	\begin{itemize}\small
+		\item Séquentielle = intensité
+		\item Divergente = déviation
+		\item Considérer discrétiser les couleurs
 	\end{itemize}
 	\vspace{-10pt}
 	\item Blanc pour les données non pertinentes
@@ -786,6 +787,7 @@ Figure~1. Exemple d'une «~heatmap~» pour l'attention d'un réseau pendant la t
 	\item Permet d'identifier les modes
 	\item Peuvent être groupés comme les diagrammes à bandes
 	\item Normaliser l'\textbf{aire}, pas la largeur
+	\item Pas de palette séquentielle
 \end{itemize}
 \end{minipage}
 & 
@@ -1006,7 +1008,7 @@ Deuteranopia & Protanopia & Tritanopia & Monochromacy\\
 \textbf{Faiblesses}
 	& Difficile à analyser, affecté par les couleurs environnantes\\
 \textbf{Mitigations}
-	& Échelle perceptuellement linéaire, annoter\\
+	& Échelle perceptuellement linéaire, annoter, discrétiser\\
 \end{tabular}
 &
 \begin{minipage}{.5\textwidth}
@@ -1063,7 +1065,7 @@ viridis & magma\\
 \textbf{Faiblesses}
 	& Difficile à analyser, affecté par les couleurs environnantes\\
 \textbf{Mitigations}
-	& Échelle perceptuellement linéaire, annoter\\
+	& Échelle perceptuellement linéaire, annoter, discrétiser\\
 \end{tabular}
 &
 \begin{minipage}{.5\textwidth}
