@@ -1,5 +1,3 @@
-%%jslbeamer
-
 % \documentclass[handout, aspectratio=169]{beamer}
 \documentclass[aspectratio=169]{beamer}
 \setlength{\parskip}{.8em}
@@ -8,7 +6,6 @@
 \definecolor{baseline-red}{HTML}{ff5043}
 \definecolor{baseline-blue}{HTML}{2d3bff}
 \definecolor{b-violet}{HTML}{7d37bf}
-% \definecolor{b-green}{HTML}{0BB350}
 \definecolor{b-green}{HTML}{33c664}
 \definecolor{b-yellow}{HTML}{f4e511}
 
@@ -19,7 +16,6 @@
 \usepackage{myBeamer}
 \usepackage{graphbox}
 \usepackage{ragged2e}
-% \usepackage{tabularx}
 \usepackage{booktabs}
 
 \usetikzlibrary{positioning}
@@ -60,10 +56,6 @@
 \end{frame}
 
 % Être capable de partager efficacement ses résultats est une part importante de la communication scientifique. Cet exposé se veut un guide pratique sur le choix du moyen de communication des données (ex.: tableaux, diagrammes à courbes, diagrammes à bandes, etc.) ainsi que sur la manière de les présenter efficacement et professionnellement.
-
-% Guide pratique sur la communication efficace des données à l'aide de tableaux et de figures.
-%
-
 
 
 
@@ -111,35 +103,28 @@
 
 \vspace{35mm}
 
-% Ce qui est différent:
 \begin{itemize}
-	\item<4-> Les résultats doivent être \textbf{convaincants} et \textbf{faciles à comprendre}
-	% \item La méthodologie doit être \textbf{justifiée}
+	\item<4-> Résultats \textbf{convaincants} et \textbf{faciles à comprendre}
 \end{itemize}
-% Les résultats doivent être \textbf{facile à comprendre} et être \textbf{convaincants}
 
 \end{frame}
 
 
 
-\begin{frame}[c]\frametitle{Communication efficace}
-\onslide<+->
-Pour être \textbf{convaincants}, il faut:\vspace{-\parskip}
-\begin{itemize}
-	\item Des données pertinentes à l'hypothèse
-\end{itemize}
+% \begin{frame}[c]\frametitle{Communication efficace}
+% \onslide<+->
+% Pour être \textbf{convaincants}, il faut:\vspace{-\parskip}
+% \begin{itemize}
+% 	\item Des données pertinentes à l'hypothèse
+% \end{itemize}
 
-Pour être \textbf{faciles à comprendre}, il faut:\vspace{-\parskip}
-\begin{itemize}
-	\item Éviter les données ambigües
-	\item Éviter les éléments superflus
-\end{itemize}
+% Pour être \textbf{faciles à comprendre}, il faut:\vspace{-\parskip}
+% \begin{itemize}
+% 	\item Éviter les données ambigües
+% 	\item Éviter les éléments superflus
+% \end{itemize}
 
-\onslide<+->
-On peut appliquer le principe de \og coût initial négatif \fg
-
-
-\end{frame}
+% \end{frame}
 
 
 \begin{frame}[c]\frametitle{Plan}
@@ -171,7 +156,7 @@ On peut appliquer le principe de \og coût initial négatif \fg
 
 \visible<1>{
 \node[couleurSecondaire] at (-3.5, 1.3) {Faux, ambigü, contradictoire};
-\node[couleurTheme] at (0, -1.3) {Superflu, redondant, distrayant};
+\node[couleurTheme] at (0, -1.3) {Superflu, redondant, \textbf{distrayant}};
 \node[b-green] at (4, 1.3) {Utile, convaincant};
 \draw[->] (-5,0) -- (5,0) node[pos=1, anchor=west, align=left] {Valeur\\ intrinsèque};
 \draw[-] (0,.2) -- (0,-.2) node[below] {0};
@@ -283,40 +268,6 @@ Tableau de \textbf{communication} & Tableau de \textbf{compilation}\\
 
 \begin{frame}[c]\frametitle{Les tableaux de communication}
 
-% \begin{tabular}{ll}
-% \bf Pros & \bf Cons \\[5pt]
-% \begin{minipage}{.35\textwidth}
-% \begin{itemize}
-% 	\item Dense et compact
-% 	\item Précis
-% \end{itemize}
-% \end{minipage}
-% &
-% \begin{minipage}{.6\textwidth}
-% \begin{itemize}
-% 	\item Difficile d'extraire des tendances
-% 	\item Peu visuel
-% \end{itemize}
-% \end{minipage}
-% \end{tabular}
-
-
-% \begin{tabular}{||c|c|c||}
-% \hline
-% \multirow{2}{*}{Boeuf} & kg & 13,65\$ \\
-% \cline{2-3}
-%  & lbs & 7,99 \\ 
-% \hline
-% Poulet & \multirow{2}{*}{Farci} & 5,99 \\ 
-% \cline{1-1}
-% \cline{3-3}
-% Dinde &  & 10,99 \\ 
-% \hline
-% Porc & Congelé & 4,99\\
-% \hline
-% \end{tabular}
-
-
 \begin{tabular}{p{.5\textwidth}c}
 \includegraphics[width=.5\textwidth]{figures/bad-table.png}\\
 \scriptsize\raggedright
@@ -357,20 +308,20 @@ Perceiver & --- & 76.4 & no\\
 \vspace{-4mm}
 
 \begin{itemize}
-	\item<+-> Tableau $\ne$ grille:
+	\item Étiquettes des colonnes avec unités et abbréviations limitées
+	\item Tableau $\ne$ grille:
 	\begin{itemize}
 		\item Lignes horizontales: début, fin et entre les sections seulement
 		\item JAMAIS de lignes verticales: ajuster l'espace entre les colonnes
 	\end{itemize}
 	\vspace{-3mm}
-	\item<+-> Étiquettes des colonnes avec unités et abbréviations limitées
-	\item<+-> Titre \textit{au-dessus} du tableau avec explications
-	\item<+-> Éviter les répétitions
-	\item<+-> Citer dans le titre ou le texte
-	\item<+-> Mettre en évidence une seule chose à la fois
-	\item<+-> Éviter les couleurs
-	\item<+-> Référer au tableau explicitement dans le texte
-	\item<+-> Aligner les chiffres à droite, le texte à gauche
+	\item Mettre en évidence une seule chose à la fois
+	\item Titre \textit{au-dessus} du tableau avec explications
+	\item Éviter les répétitions
+	\item Citer dans le titre ou le texte
+	\item Éviter les couleurs
+	\item Référer au tableau explicitement dans le texte
+	\item Aligner les chiffres à droite, le texte à gauche
 \end{itemize}
 
 \end{frame}
@@ -385,6 +336,35 @@ Les packages:
 \begin{itemize}
 	\item \texttt{booktabs}: Redéfinit entièrement les tableaux (\href{https://ctan.mirror.rafal.ca/info/translations/booktabs/fr/f-booktabs.pdf}{\underline{documentation}})
 	\item \texttt{multicol} et \texttt{multirow}: Fusionner des cellules
+\end{itemize}
+
+
+Outil d'aide à la génération de tableaux:
+\vspace{-\parskip}
+\begin{itemize}
+	\item \url{https://www.tablesgenerator.com/}
+	\item \href{https://github.com/jsleb333/python2latex}{\underline{python2latex}} (Création du code LaTeX à partir de \texttt{numpy arrays})
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Commandes LaTeX}
+
+\vspace{-4mm}
+\footnotesize
+
+Les colonnes:
+\vspace{-\parskip}
+\begin{itemize}
+	\item \verb!@{\hskip<distance>}! pour ajuster la distance entre deux colonnes
+\end{itemize}
+
+Le titre:
+\vspace{-\parskip}
+\begin{itemize}
+	\item \verb!\caption{<titre>}! pour le titre
+	\item \verb!\vspace{<distance>}! pour ajuster la distance entre le titre et le tableau
 \end{itemize}
 
 Les lignes:
@@ -402,32 +382,6 @@ Les cellules fusionnées:
 	\item \verb!\multicolumn{<n col>}{c}{<contenu>}! pour les colonnes
 \end{itemize}
 
-\end{frame}
-
-
-\begin{frame}[fragile]\frametitle{Tableaux professionnels avec LaTeX}
-
-\vspace{-3mm}
-
-Les colonnes:
-\vspace{-\parskip}
-\begin{itemize}
-	\item \verb!@{\hskip<distance>}! pour ajuster la distance entre deux colonnes
-\end{itemize}
-
-Le titre:
-\vspace{-\parskip}
-\begin{itemize}
-	\item \verb!\caption{<titre>}! pour le titre
-	\item \verb!\vspace{<distance>}! pour ajuster la distance entre le titre et le tableau
-\end{itemize}
-
-Outil d'aide à la génération de tableaux:
-\vspace{-\parskip}
-\begin{itemize}
-	\item \url{https://www.tablesgenerator.com/}
-	\item \href{https://github.com/jsleb333/python2latex}{\underline{python2latex}} (Création du code LaTeX à partir de \texttt{numpy arrays})
-\end{itemize}
 
 
 \end{frame}
@@ -453,6 +407,7 @@ Outil d'aide à la génération de tableaux:
 \caption{Top-1 validation accuracy on ImageNet.}
 \label{tab:top1_imagenet}
 \vspace{3pt}
+
 \begin{tabular}{l@{\hskip5pt}r@{\hskip10pt}r@{\hskip5pt}c}
 \toprule
 \multirow{2}{*}[-2pt]{Model}
@@ -474,7 +429,8 @@ Perceiver   & --- & 76.4 & no\\
 \begin{minipage}{.39\textwidth}
 \scriptsize\rmfamily
 Top-1 validation accuracy on ImageNet.
-\vspace{6pt}
+\vspace*{3pt}
+
 \begin{tabular}{l@{\hskip5pt}r@{\hskip10pt}r@{\hskip5pt}c}
 \toprule
 \multirow{2}{*}[-2pt]{Model}
@@ -575,44 +531,6 @@ Perceiver   & --- & 76.4 & no\\
 
 
 
-% \begin{frame}[c]\frametitle{Les types de graphiques}
-    
-
-
-% \textbf{Types} de graphiques:
-
-% \begin{tabular}{l@{}l}
-% \begin{minipage}{.45\textwidth}
-% \begin{itemize}
-% 	\item Courbes (\textit{line plot})
-% 	\item Histogrammes (\textit{bar chart})
-% 	\item Circulaires (\textit{pie chart})
-% 	\item etc.
-% \end{itemize}
-% \end{minipage}
-% &
-% \begin{minipage}{.5\textwidth}
-% \begin{itemize}
-% 	\item Violons (\textit{violin plot})
-% 	\item Boîtes à moustaches (\textit{box plot})
-% 	\item Nuages de points (\textit{scatter plot})
-% 	\item[]
-% \end{itemize}
-% \end{minipage}
-% \end{tabular}
-
-
-% \textbf{Trois situations} fréquentes:
-% \vspace{-.8\parskip}
-% \begin{enumerate}
-% 	\item Comparer des séquences
-% 	\item Visualiser des distributions
-% 	\item Étudier des relations
-% \end{enumerate}
-
-
-% \end{frame}
-
 
 
 \begin{frame}[c]\frametitle{Principes premiers d'une figure}
@@ -650,9 +568,6 @@ Perceiver   & --- & 76.4 & no\\
 
 \begin{frame}[c]\frametitle{Représentation claire}
     
-% \begin{itemize}
-% 	\item Auto-évidente, simple et facile à comprendre
-% \end{itemize}
 \begin{center}
 \includegraphics[scale=.25]{figures/unclear-chart.png} 
 \end{center}
@@ -799,7 +714,6 @@ Figure~1. Exemple d'un nuage de point avec deux types de points. De la transpare
 	\item Repères verticaux non-nécessaires
 	\item Axe vertical commence à l'origine  
 	\item Données près de la bande
-	% \item Couleurs pour identifier des sous-catégories
 	\item Bandes en ordre croissant
 	\item Bandes à l'horizontal si les étiquettes ne rentrent pas (ne pas pivoter le texte)
 \end{itemize}
@@ -943,7 +857,6 @@ Figure~1. Exemple d'un diagramme à violons pour la distribution des attributs d
 \begin{frame}[c]\frametitle{Les couleurs}
 
 \vspace{-2mm}
-% \textbf{Utilité:}\vspace{-\parskip}
 \onslide<2->
 \begin{minipage}[t]{.49\textwidth}
 \centering
@@ -984,8 +897,6 @@ Mettre en \textbf{évidence}
 
 \begin{frame}[t]\frametitle{Limitations}
 
-% \vspace*{-4mm}
-
 
 \begin{itemize}\setlength{\itemsep}{2pt}
 	\item<1-> Difficile de comparer des couleurs semblables
@@ -1020,38 +931,6 @@ Environ un homme sur 10 est daltonien.
 
 
 
-% \begin{frame}[c]\frametitle{Les palettes de couleurs}
-
-% \vspace{-3mm}
-% \RaggedRight\footnotesize
-% \renewcommand{\arraystretch}{1.7}
-% \begin{tabular}{lp{.27\textwidth}p{.27\textwidth}p{.27\textwidth}}
-%  & \textbf{Qualitative} & \textbf{Séquentielle} & \textbf{Divergente}\\[1mm]
-% Continues
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_continuous.pdf}}
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_continuous.pdf}}
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_continuous.pdf}} \\
-% Discrètes
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/qualitative_discrete.pdf}}
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/sequential_discrete.pdf}}
-% 	& \raisebox{-.35\height}{\includegraphics[width=.25\textwidth]{palettes/diverging_discrete.pdf}} \\
-% Utilité & Catégories & Intensité & Déviation \\
-% Propriétés 
-% 	& 1 teinte par catégorie 
-% 	& 1 teinte; le blanc marque le neutre
-% 	& 2 teintes; le blanc marque le neutre\\
-% Faiblesses 
-% 	& Daltonisme, tons de gris
-% 	& Difficile à analyser, affecté par les couleurs environnantes
-% 	& Difficile à analyser, affecté par les couleurs environnantes \\
-% Mitigations
-% 	& Varier la luminosité, annoter
-% 	& Échelle perceptuellement linéaire, annoter
-% 	& Échelle perceptuellement linéaire, annoter
-% \end{tabular}
-
-
-% \end{frame}
 
 
 
@@ -1107,24 +986,6 @@ Deuteranopia & Protanopia & Tritanopia & Monochromacy\\
 \end{frame}
 
 
-% \begin{frame}[c]\frametitle{Palettes qualitatives}
-
-% Se basent principalement sur les teintes (\textit{hue}) (ex. rouge, jaune, bleu...)
-
-% Utiles pour différencier les catégories
-
-% À proscrire pour les valeurs continues
-
-% Une bonne palette qualitative\vspace{-\parskip}
-% \begin{itemize}
-% 	\item utilise des teintes \textit{perceptuellement} également espacées
-% 	\item fait varier la luminosité des teintes
-% \end{itemize}
-
-% \end{frame}
-
-
-
 
 
 
@@ -1164,7 +1025,6 @@ Discrète
 \end{tabular}
 
 \pause
-% \vspace{4mm}
 \small
 \textbf{Autres exemples}
 
@@ -1179,19 +1039,6 @@ viridis & magma\\
 
 \end{frame}
 
-
-% \begin{frame}[c]\frametitle{Palettes séquentielles}
-
-% Se basent sur une ou deux teintes similaires et sur la luminosité
-
-% Utiles pour représenter une intensité (avec un minimum/maximum de référence)
-
-% Une bonne palette séquentielle\vspace{-\parskip}
-% \begin{itemize}
-% 	\item est \textit{perceptuellement} linéaire en teinte et luminosité
-% 	\item est foncée pour les valeurs «~intenses~»
-% \end{itemize}
-% \end{frame}
 
 
 
@@ -1235,7 +1082,6 @@ Discrète
 \end{tabular}
 
 \pause
-% \vspace{4mm}
 \centering
 \small
 \begin{tikzpicture}
@@ -1254,21 +1100,6 @@ Discrète
 
 
 \end{frame}
-
-% \begin{frame}[c]\frametitle{Palettes divergentes}
-    
-% Se basent sur deux teintes opposées et sur la luminosité
-
-% Utiles pour représenter une déviation (avec une valeur «~centrale~» de référence)
-
-% Une bonne palette divergente\vspace{-\parskip}
-% \begin{itemize}
-% 	\item est \textit{perceptuellement} linéaire en teinte et luminosité
-% 	\item est saturée et foncée aux extrémités et lumineuse au centre
-% 	\item utilise des teintes opposés (ex. bleu et orange, cyan et rouge)
-% \end{itemize}
-    
-% \end{frame}
 
 
 
